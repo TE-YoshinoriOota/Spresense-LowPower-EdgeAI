@@ -12,7 +12,7 @@
 ## 開発環境
 SpresenseのサンプルプログラムはArduino IDE向けに記述されています。インストールされていない方はArduino IDEをダウンロードしインストールをしてください。
 
-[Arduino IDE](https://www.arduino.cc/en/software)
+[Arduino IDEダウンロードサイト](https://www.arduino.cc/en/software)
 
 Neural Network Consoleにはクラウド版をWindowsアプリがあります。クラウド版は学習・評価実行時間10時間、ワークスペース容量10GB、プロジェクト数10個までの無料枠が用意されています。その枠を超えた場合の利用料は下記サイトを参照ください。
 
