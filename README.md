@@ -2,14 +2,107 @@
 
 ![Get-Started-LowPower-EdgeAI-with-Spresense](https://user-images.githubusercontent.com/14106176/154521710-f711b888-f3de-414e-aa12-5a4b5aeda5b2.png)
 
-書籍『SPRESENSEではじめるローパワーエッジAI』(オライリー・ジャパン発行)のサポートサイトです。本書籍で使用するサンプルプログラム、サンプルデータセット、Neural Network Console サンプルプロジェクト等ががまとめられています。
+書籍『SPRESENSEではじめるローパワーエッジAI』(オライリー・ジャパン発行)のサポートサイトです。本書籍で使用するサンプルスケッチ（プログラム）、サンプルデータセット、Neural Network Console(NNC) サンプルプロジェクト等ががまとめられています。
 
 ## ファイル構成
+<table>
+  <tr><td>フォルダ名</td><td>サブフォルダ名</td><td>説明</td></tr>
+  <tr><td>Chap01</td><td>sketches</td><td>１章で使用するサンプルスケッチ</td></tr>
+  <tr><td>Chap02</td><td>sketches</td><td>２章で使用するサンプルスケッチ</td></tr>
+  <tr><td>Chap03</td><td>sketches</td><td>３章で使用するサンプルスケッチ</td></tr>
+  <tr><td rowspan="2">Chap04</td>
+    <td>nnc_dataset</td><td>４章で使用するデータセット</td>
+  </tr>
+  <tr>
+    <td>nnc_project</td><td>４章で使用するNNCプロジェクト</td>
+  </tr>
+  <tr><td rowspan="3">Chap06</td>
+    <td>dnnrt_test</td><td>６章で使用する認識用テストデータ</td>
+  </tr>
+  <tr>
+    <td>nnc_model</td><td>６章で使用する学習済モデル</td>
+  </tr>  
+  <tr>
+    <td>sketches</td><td>６章で使用するサンプルスケッチ</td>
+  </tr>  
+  <tr><td rowspan="3">Chap07</td>
+    <td>dnnrt_test</td><td>７章で使用する認識用テストデータ</td>
+  </tr>
+  <tr>
+    <td>nnc_model</td><td>７章で使用する学習済モデル</td>
+  </tr>  
+  <tr>
+    <td>sketches</td><td>７章で使用するサンプルスケッチ</td>
+  </tr>  
+  <tr><td rowspan="4">Chap08</td>
+    <td>nnc_dataset</td><td>８章で使用するデータセット</td>
+  </tr>
+  <tr>
+    <td>nnc_model</td><td>８章で使用する学習済モデル</td>
+  </tr>  
+  <tr>
+    <td>nnc_project</td><td>８章で使用するNNCプロジェクト</td>
+  </tr>
+  <tr>
+    <td>sketches</td><td>８章で使用するサンプルスケッチ</td>
+  </tr>    
+  <tr><td rowspan="6">Chap09</td>
+    <td>dnnrt_test</td><td>９章で使用する認識用テストデータ</td>
+  </tr>
+  <tr>
+    <td>nnc_dataset</td><td>９章で使用するデータセット</td>
+  </tr>  
+  <tr>
+    <td>nnc_model</td><td>９章で使用する学習済モデル</td>
+  </tr>  
+  <tr>
+    <td>nnc_project</td><td>９章で使用するNNCプロジェクト</td>
+  </tr>
+  <tr>
+    <td>python</td><td>９章で使用するPythonプログラム</td>
+  </tr>
+  <tr>
+    <td>sketches</td><td>９章で使用するサンプルスケッチ</td>
+  </tr>    
+  
+  <tr><td rowspan="5">Chap10</td>
+    <td>dnnrt_test</td><td>１０章で使用する認識用テストデータ</td>
+  </tr>
+  <tr>
+    <td>nnc_dataset</td><td>１０章で使用するデータセット</td>
+  </tr>  
+  <tr>
+    <td>nnc_model</td><td>１０章で使用する学習済モデル</td>
+  </tr>  
+  <tr>
+    <td>nnc_project</td><td>１０章で使用するNNCプロジェクト</td>
+  </tr>
+  <tr>
+    <td>sketches</td><td>１０章で使用するサンプルスケッチ</td>
+  </tr>    
 
-編集中
+  <tr><td rowspan="4">Chap11</td>
+    <td>nnc_dataset</td><td>１１章で使用するデータセット</td>
+  </tr>
+  <tr>
+    <td>nnc_model</td><td>１１章で使用する学習済モデル</td>
+  </tr>  
+  <tr>
+    <td>nnc_project</td><td>１１章で使用するNNCプロジェクト</td>
+  </tr>
+  <tr>
+    <td>sketches</td><td>１１章で使用するサンプルスケッチ</td>
+  </tr>    
+
+  <tr><td>Libraries</td><td colspan="2">本書で使用するArduino用ライブラリ</td></tr>
+
+
+</table>
+
+
 
 ## 開発環境
-SpresenseのサンプルプログラムはArduino IDE向けに記述されています。インストールされていない方はArduino IDEをダウンロードしインストールをしてください。
+Spresenseのサンプルスケッチ（プログラム）はArduino IDEで記述されています。Arduino IDEをインストールされていない方は次のサイトからダウンロードしインストールをしてください。
 
 [Arduino IDEダウンロードサイト](https://www.arduino.cc/en/software)
 
