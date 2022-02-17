@@ -41,9 +41,11 @@ Neural Network Consoleにはクラウド版をWindowsアプリがあります。
 
 
 ## ライセンス
-本リポジトリに掲載されているサンプルプログラムは次のライセンスに準じます・
+本リポジトリに掲載されているサンプルプログラムは次のライセンスに準じます。
+
 GNU Lesser General Public License v2.1 
 
 本リポジトリに掲載されているサンプルデータセット、Neural Networkサンプルプロジェクト等については次のライセンスに準じます。
+
 Creative Commons Attribution 4.0 International license
 
