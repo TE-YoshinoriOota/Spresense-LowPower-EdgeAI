@@ -8,7 +8,6 @@
 
 編集中
 
-
 ## 開発環境
 SpresenseのサンプルプログラムはArduino IDE向けに記述されています。インストールされていない方はArduino IDEをダウンロードしインストールをしてください。
 
@@ -19,7 +18,6 @@ Neural Network Consoleにはクラウド版をWindowsアプリがあります。
 [Neural Network Consoleクラウド版](https://dl.sony.com/ja/cloud/)
 
 [Neural Network Console Windowsアプリ](https://dl.sony.com/ja/app/)
-
 
 
 ## 技術情報リンク 
@@ -42,4 +40,10 @@ Neural Network Consoleにはクラウド版をWindowsアプリがあります。
 [Neural Network Console YouTubeチャンネル](https://www.youtube.com/c/NeuralNetworkConsole)
 
 
+## ライセンス
+本リポジトリに掲載されているサンプルプログラムは次のライセンスに準じます・
+GNU Lesser General Public License v2.1 
+
+本リポジトリに掲載されているサンプルデータセット、Neural Networkサンプルプロジェクト等については次のライセンスに準じます。
+Creative Commons Attribution 4.0 International license
 
