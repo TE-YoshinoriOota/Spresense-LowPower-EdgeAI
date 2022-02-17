@@ -1,0 +1,6 @@
+"model.nnb" 
+Trained model for the number recognition project produced by Neural Network Console
+Copyright 2022 Sony Semiconductor Solutions Corporation
+
+It is licensed under a Creative Commons Attribution 4.0 International license
+("CC-BY-4.0", available at https://creativecommons.org/licenses/by/4.0)
