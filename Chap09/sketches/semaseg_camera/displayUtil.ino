@@ -21,16 +21,17 @@
 #define IMG_HEIGHT  (240)
 #define THICKNESS (5)
 
-bool draw_sideband(int16_t* buf, int thickness, int color) {
+void draw_sideband(uint16_t* buf, int thickness, int color) {
+  Serial.println("draw_sideband");
   for (int i = 0; i < IMG_HEIGHT; ++i) {
     for (int j = 0; j < thickness; ++j) {
       buf[i*IMG_WIDTH + j] = color;
       buf[i*IMG_WIDTH + IMG_WIDTH-j-1] = color;
     }
-  }   
+  } 
 }
 
-bool draw_box(int16_t* buf, int sx, int sy, int w, int h) {
+bool draw_box(uint16_t* buf, int sx, int sy, int w, int h) {
   const int thickness = 4; // BOXの線の太さ
   
   if (sx < 0 || sy < 0 || w < 0 || h < 0) { 

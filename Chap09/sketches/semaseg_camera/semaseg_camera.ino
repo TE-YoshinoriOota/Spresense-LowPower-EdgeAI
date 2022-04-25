@@ -37,7 +37,6 @@ SDClass SD;
 // RGBの画像を入力
 DNNVariable input(DNN_WIDTH*DNN_HEIGHT*3);  
 
-
 void CamCB(CamImage img) {
   if (!img.isAvailable()) return;
 
@@ -83,6 +82,7 @@ void CamCB(CamImage img) {
   
   // 認識対象の縦幅と縦方向座標を取得
   int16_t s_sy, s_height;
+  int sx, width, sy, height;
   err = get_sy_and_height_of_region(output, DNN_WIDTH, DNN_HEIGHT, &s_sy, &s_height);
   if (!err) {
     Serial.println("detection error");
@@ -96,10 +96,10 @@ void CamCB(CamImage img) {
   }
   
   // 認証対象のボックスと座標をカメラ画像にあわせて拡大
-  int sx = s_sx * (CLIP_WIDTH/DNN_WIDTH) + OFFSET_X;
-  int width = s_width * (CLIP_WIDTH/DNN_WIDTH);
-  int sy = s_sy * (CLIP_HEIGHT/DNN_HEIGHT) + OFFSET_Y;
-  int height = s_height * (CLIP_HEIGHT/DNN_HEIGHT);
+  sx = s_sx * (CLIP_WIDTH/DNN_WIDTH) + OFFSET_X;
+  width = s_width * (CLIP_WIDTH/DNN_WIDTH);
+  sy = s_sy * (CLIP_HEIGHT/DNN_HEIGHT) + OFFSET_Y;
+  height = s_height * (CLIP_HEIGHT/DNN_HEIGHT);
     
 disp:
   img.convertPixFormat(CAM_IMAGE_PIX_FMT_RGB565);  
@@ -110,7 +110,7 @@ disp:
   
   // サイドバンドをフレームバッファに描画
   draw_sideband(buf, OFFSET_X, ILI9341_BLACK);
-  
+    
   // DNNRTへの入力画像をLCDの左上に表示
   display.drawRGBBitmap(0, 0, (uint16_t*)sbuf, DNN_HEIGHT, DNN_WIDTH);  
   // DNNRTの出力画像をLCDの右上に表示
@@ -118,6 +118,7 @@ disp:
   // ボックス描画されたカメラ画像を表示
   display.drawRGBBitmap(0, DNN_HEIGHT, buf, 320, 240-DNN_HEIGHT);
 }
+
 
 void setup() {
 
