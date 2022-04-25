@@ -22,7 +22,6 @@
 #define THICKNESS (5)
 
 void draw_sideband(uint16_t* buf, int thickness, int color) {
-  Serial.println("draw_sideband");
   for (int i = 0; i < IMG_HEIGHT; ++i) {
     for (int j = 0; j < thickness; ++j) {
       buf[i*IMG_WIDTH + j] = color;
