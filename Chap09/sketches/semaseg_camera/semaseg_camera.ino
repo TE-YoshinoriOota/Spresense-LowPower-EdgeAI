@@ -83,6 +83,7 @@ void CamCB(CamImage img) {
   // 認識対象の縦幅と縦方向座標を取得
   int16_t s_sy, s_height;
   int sx, width, sy, height;
+  sx = width = sy = height = 0;
   err = get_sy_and_height_of_region(output, DNN_WIDTH, DNN_HEIGHT, &s_sy, &s_height);
   if (!err) {
     Serial.println("detection error");
