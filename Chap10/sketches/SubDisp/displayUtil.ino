@@ -19,9 +19,11 @@
 
 #include "Adafruit_GFX.h"
 #include "Adafruit_ILI9341.h"
+#define TFT_RST 8
 #define TFT_DC  9
-#define TFT_CS  10
-Adafruit_ILI9341 display = Adafruit_ILI9341(TFT_CS, TFT_DC);
+#define TFT_CS 10
+Adafruit_ILI9341 tft = Adafruit_ILI9341(&SPI, TFT_DC, TFT_CS, TFT_RST);
+
 
 // テキスト表示位置
 #define TX  (35)
