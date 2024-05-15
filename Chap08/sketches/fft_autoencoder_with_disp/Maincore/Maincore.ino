@@ -78,7 +78,7 @@ void setup() {
     Serial.print("DNN Runtime begin fail: " + String(ret));
     while(1);
   } 
-  // ハミング窓、モノラル、オーバーラップ50%
+  // ハミング窓、モノラル、オーバーラップ25%
   FFT.begin(WindowHamming, 1, (FFT_LEN/4));
 
   Serial.println("Init Audio Recorder");
@@ -141,7 +141,7 @@ void loop(){
   float* dnnbuf = input.data();
   for (int i = 0; i < FFT_LEN/8; ++i) {
     // スペクトルを0.0～1.0に正規化
-    dnnbuf[i] = dnnbuf[i] = pDst[i] = (pDst[i]-fpmin) / (fpmax-fpmin); ;  
+    dnnbuf[i] = pDst[i] = (pDst[i]-fpmin) / (fpmax-fpmin); ;  
   }
   // 推論を実行
   dnnrt.inputVariable(input, 0);
