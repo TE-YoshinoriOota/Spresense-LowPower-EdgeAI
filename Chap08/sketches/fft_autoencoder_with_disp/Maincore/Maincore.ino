@@ -78,8 +78,8 @@ void setup() {
     Serial.print("DNN Runtime begin fail: " + String(ret));
     while(1);
   } 
-  // ハミング窓、モノラル、オーバーラップ25%
-  FFT.begin(WindowHamming, 1, (FFT_LEN/4));
+  // ハミング窓、モノラル、オーバーラップ50%
+  FFT.begin(WindowHamming, 1, (FFT_LEN/2));
 
   Serial.println("Init Audio Recorder");
   // 入力をマイクに設定  
@@ -111,7 +111,12 @@ void loop(){
   static char buff[buffer_size];
   static float pDst[FFT_LEN];
   uint32_t read_size; 
-    
+
+  // マイクやファン、パイプ、マイクの状態で数値は大きく変動します
+  // 実測をしてみて適切と思われる数値に設定してください
+  static const float maxSpectrum = 1.5;  // FFT演算結果を見て調整
+  static const float threshold = 1.0; // RSMEのばらつきを見て調整
+  
   int ret = theAudio->readFrames(buff, buffer_size, &read_size);
   if (ret != AUDIOLIB_ECODE_OK && ret != AUDIOLIB_ECODE_INSUFFICIENT_BUFFER_AREA) {
     Serial.println("Error err = " + String(ret));
@@ -127,21 +132,13 @@ void loop(){
   FFT.put((q15_t*)buff, FFT_LEN);  //FFTを実行
   FFT.get(pDst, 0);  // FFT演算結果を取得
   avgFilter(pDst); // 過去のFFT演算結果で平滑化
-
-  // 周波数スペクトルの最大値最小値を検出
-  float fpmax = FLT_MIN; float fpmin = FLT_MAX;
-  for (int i = 0; i < FFT_LEN/8; ++i) {
-    if (pDst[i] < 0.0) pDst[i] = 0.0;  
-    if (pDst[i] > fpmax) fpmax = pDst[i];
-    if (pDst[i] < fpmin) fpmin = pDst[i];
-  }
   
   // DNNRTの入力データにFFT演算結果を設定
   DNNVariable input(FFT_LEN/8); 
-  float* dnnbuf = input.data();
+  float *dnnbuf = input.data();
   for (int i = 0; i < FFT_LEN/8; ++i) {
-    // スペクトルを0.0～1.0に正規化
-    dnnbuf[i] = pDst[i] = (pDst[i]-fpmin) / (fpmax-fpmin); ;  
+    pDst[i] /= maxSpectrum;  // 0.0~1.0に正規化
+    dnnbuf[i] = pDst[i];
   }
   // 推論を実行
   dnnrt.inputVariable(input, 0);
@@ -169,9 +166,6 @@ void loop(){
   avg_err /= average_cnt;
   Serial.println("Result: " + String(avg_err, 7));
 
-  // マイクやファン、パイプ、マイクの状態で数値は大きく変動します
-  // 実測をしてみて適切と思われる数値に設定してください
-  static const float threshold = 1.2; // RSMEのばらつきを見て調整
   // 閾値でOK/NGを判定
   bool bNG = false;
   avg_err > threshold ? bNG = true : bNG = false;
