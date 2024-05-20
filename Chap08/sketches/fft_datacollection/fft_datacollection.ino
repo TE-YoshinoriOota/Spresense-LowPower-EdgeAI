@@ -83,6 +83,10 @@ void loop() {
   static float pDst[FFT_LEN];
   uint32_t read_size;
 
+  // マイクやファン、パイプ、マイクの状態で数値は大きく変動します
+  // 実測をしてみて適切と思われる数値に設定してください
+  static const float maxSpectrum = 1.5;  // FFT演算結果を見て調整
+  
   // buffer_sizeで要求されたデータをbuffに格納する
   // 読み込みできたデータ量は read_size に設定される
   int ret = theAudio->readFrames(buff, buffer_size, &read_size);
@@ -102,6 +106,10 @@ void loop() {
   FFT.get(pDst, 0);  // FFT演算結果を取得
   avgFilter(pDst); // 過去のFFT演算結果で平滑化
 
+  for (int i = 0; i < FFT_LEN/8; ++i) {
+    pDst[i] /= maxSpectrum;  // 0.0~1.0に正規化
+  }
+  
   static uint32_t last_capture_time = 0;
   uint32_t capture_interval = millis() - last_capture_time;
   // 1秒経過したら記録する
